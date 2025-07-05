@@ -1,0 +1,212 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("/fonts/press-start-2p.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PublicPixel";
+  src: url("/fonts/PublicPixel.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --win98-gray: #c0c0c0;
+    --win98-dark-gray: #808080;
+    --win98-light-gray: #dfdfdf;
+    --win98-blue: #0000ff;
+    --win98-dark-blue: #000080;
+    --win98-white: #ffffff;
+    --win98-black: #000000;
+    --win98-red: #ff0000;
+    --win98-green: #008000;
+    --win98-yellow: #ffff00;
+    --win98-cyan: #00ffff;
+    --win98-magenta: #ff00ff;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: "PublicPixel", "Press Start 2P", monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    background: var(--win98-gray);
+    color: var(--win98-black);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
+
+.win98-window {
+  background: var(--win98-gray);
+  border: 2px outset var(--win98-gray);
+  box-shadow: inset -1px -1px var(--win98-dark-gray), inset 1px 1px var(--win98-white);
+}
+
+.win98-button {
+  background: var(--win98-gray);
+  border: 1px outset var(--win98-gray);
+  padding: 4px 8px;
+  font-family: "PublicPixel", "Press Start 2P", monospace;
+  font-size: 10px;
+  cursor: pointer;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.win98-button:hover {
+  background: var(--win98-light-gray);
+}
+
+.win98-button:active,
+.win98-button.active {
+  border: 1px inset var(--win98-gray);
+  background: var(--win98-gray);
+}
+
+.win98-button:disabled {
+  color: var(--win98-dark-gray);
+  background: var(--win98-gray);
+  cursor: not-allowed;
+}
+
+.win98-titlebar {
+  background: linear-gradient(90deg, var(--win98-dark-blue) 0%, var(--win98-blue) 100%);
+  color: white;
+  padding: 3px 6px;
+  font-weight: normal;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 20px;
+  font-family: "PublicPixel", "Press Start 2P", monospace;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.win98-titlebar.inactive {
+  background: linear-gradient(90deg, var(--win98-dark-gray) 0%, var(--win98-gray) 100%);
+  color: var(--win98-black);
+}
+
+.win98-panel {
+  background: var(--win98-gray);
+  border: 1px inset var(--win98-gray);
+  padding: 6px;
+}
+
+.win98-toolbar {
+  background: var(--win98-gray);
+  border-bottom: 1px solid var(--win98-dark-gray);
+  padding: 3px;
+  display: flex;
+  gap: 2px;
+}
+
+.win98-statusbar {
+  background: var(--win98-gray);
+  border-top: 1px inset var(--win98-gray);
+  padding: 3px 6px;
+  font-size: 10px;
+  min-height: 22px;
+  display: flex;
+  align-items: center;
+  font-family: "PublicPixel", "Press Start 2P", monospace;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.win98-menu {
+  background: var(--win98-gray);
+  border: 1px outset var(--win98-gray);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.win98-canvas {
+  background: white;
+  border: 2px inset var(--win98-gray);
+  image-rendering: pixelated;
+}
+
+.win98-input {
+  background: white;
+  border: 1px inset var(--win98-gray);
+  padding: 3px 6px;
+  font-family: "PublicPixel", "Press Start 2P", monospace;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.win98-select {
+  background: white;
+  border: 1px inset var(--win98-gray);
+  padding: 3px 6px;
+  font-family: "PublicPixel", "Press Start 2P", monospace;
+  font-size: 10px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.win98-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  min-width: 320px;
+}
+
+.win98-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.pixel-font {
+  font-family: "PublicPixel", "Press Start 2P", monospace;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+/* Fix for button interactions */
+button {
+  pointer-events: auto;
+}
+
+canvas {
+  pointer-events: auto;
+}
+
+select {
+  pointer-events: auto;
+}
+
+input {
+  pointer-events: auto;
+}
